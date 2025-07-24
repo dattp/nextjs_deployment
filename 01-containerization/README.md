@@ -13,7 +13,7 @@ Thực hành chính:
     - Dockerfile sau khi sửa:
   
 ```yaml
-  # Chọn hình ảnh Node.js chính thức từ Docker Hub (v20)
+# Chọn hình ảnh Node.js chính thức từ Docker Hub (v20)
 FROM node:22-alpine AS build
 
 # Tạo thư mục làm việc
@@ -42,6 +42,11 @@ FROM node:22-alpine AS runtime
 
 # Tạo thư mục làm việc
 WORKDIR /app
+
+ENV HOST 0.0.0.0
+
+ARG NEXT_ENVIRONMENT
+ENV NODE_ENV $NEXT_ENVIRONMENT
 
 # Sao chép các tập tin đã xây dựng từ giai đoạn build
 COPY --from=build /app/.next/standalone ./
