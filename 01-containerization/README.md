@@ -8,9 +8,57 @@ Thực hành chính:
    - docker run -p <PORT_EX>:<PORT_IN> {image_name}
   - Tối ưu image size:
     - bổ sung thêm .dockerignore
-    - thay đổi nextconfig sang `output: "standalone"`
-    - sử dung: `FROM node:22-alpine`
-    - Dockerfile sau khi sửa:
+  
+```
+# .dockerignore
+Dockerfile
+.dockerignore
+.git
+.gitignore
+.github
+README.md
+.env
+.env.example
+.env.local
+
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage
+.nyc_output
+
+# Next.js
+.next/
+out/
+
+# Production
+build
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+*.log
+
+# Local env files
+.env*.local
+
+# Vercel
+.vercel
+
+# Typescript
+*.tsbuildinfo
+next-env.d.ts
+```
+
+  - thay đổi nextconfig sang `output: "standalone"`
+  - sử dung: `FROM node:22-alpine`
+  - Dockerfile sau khi sửa:
   
 ```yaml
 # Chọn hình ảnh Node.js chính thức từ Docker Hub (v20)
